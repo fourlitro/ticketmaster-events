@@ -1,36 +1,31 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-const useEventData = () => {
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState();
+const useEventsData = () => {
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState();
 
-  const fetchEvent = async (params) => {
-    try {
-      const response = await fetch(
-        `https://app.ticketmaster.com/discovery/v2/events.json?apikey=pIUcApoP7o6YwxEKYFtjHuM6I22UmSLM&countryCode=MX${
-          params?.lenght ? params : ""
-        }`
-      );
-      const data = await response.json();
+    const fetchEvents = async (params) => {
+        try {
+            const response = await fetch(`https://app.ticketmaster.com/discovery/v2/events.json?apikey=slnNCxJPvx1eVwikZmT5nqHX8KoiJ0PA&countryCode=MX${params?.length ? params : ''}`);
+            const data = await response.json();
 
-      setData(data);
-      setIsLoading(false);
-    } catch (error) {
-      setError(error);
-    }
-  };
+            setData(data);
+            setIsLoading(false);
+        } catch (error) {
+            setError(error);
+        }
+    };
+ 
+    console.log(data);
 
-  fetchEvent();
-
-  console.log(data);
-
-  return {
-    events: data?._embedded?.events || [],
-    isLoading,
-    error,
-    fetchEvent,
-  };
+    return {
+        events: data?._embedded?.events || [],
+        page: data?.page || {},
+        isLoading,
+        error,
+        fetchEvents,
+    };
 };
 
-export default useEventData;
+export default useEventsData;
