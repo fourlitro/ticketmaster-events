@@ -1,14 +1,11 @@
-import { useState } from "react";
-
+import useEventData from "../../hooks/useEventData";
 import EventItem from "./components/EventItem/Index";
-import eventsJSON from "../../data/events.json";
 
 //creamos una constante para acceder a la data
 //const events = data._embedded.events;
 
 const Events = ({ searchTerm }) => {
-  const [data] = useState(eventsJSON);
-  const { _embedded: { events }, } = data;
+  const { events } = useEventData();
 
   const handleEventItemClick = (id) => {
     console.log("evento clickeado: ", id);
