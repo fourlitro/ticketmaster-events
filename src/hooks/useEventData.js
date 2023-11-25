@@ -1,32 +1,36 @@
-import { useEffect, useState} from 'react';
-
-import eventsJSON from '../data/events.json'
+import { useState } from "react";
 
 const useEventData = () => {
-    const [data, setData] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState();
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
 
-    useEffect(() => {
-        setTimeout(() => {
-            try {
-            setData(eventsJSON);
-            setIsLoading(false);
-            } catch (error) {
-                setError(error);
-            }
-        }, 4000);
-        //load API Call
-    }, []);
+  const fetchEvent = async (params) => {
+    try {
+      const response = await fetch(
+        `https://app.ticketmaster.com/discovery/v2/events.json?apikey=pIUcApoP7o6YwxEKYFtjHuM6I22UmSLM&countryCode=MX${
+          params?.lenght ? params : ""
+        }`
+      );
+      const data = await response.json();
 
+      setData(data);
+      setIsLoading(false);
+    } catch (error) {
+      setError(error);
+    }
+  };
 
-    console.log(data);
+  fetchEvent();
 
-    return {
-        events: data?._embedded?.events || [],
-        isLoading,
-        error,
-    };
+  console.log(data);
+
+  return {
+    events: data?._embedded?.events || [],
+    isLoading,
+    error,
+    fetchEvent,
+  };
 };
 
 export default useEventData;
