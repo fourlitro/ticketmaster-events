@@ -1,21 +1,22 @@
 .eventItemContainer {
     display: flex;
     margin: 24px 0px;
-    align-items: center;
+    align-items: start;
 }
-.eventInfoContainer{
+
+.eventInfoContainer {
     display: flex;
     flex-direction: column;
     align-items: start;
     margin-left: 14px;
 }
 
-.eventName{
+.eventName {
     margin: 0;
     font-size: 22px;
 }
 
-.eventInfo{
+.eventInfo {
     text-align: left;
     margin: 0;
     overflow: hidden;
@@ -23,9 +24,23 @@
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
-
 }
 
-.seeMoreBtn{
+.seeMoreBtn {
     margin-top: 8px;
+}
+
+.anotherContainer {}
+
+.imageContainer {
+    position: relative;
+}
+
+.hearthImage {
+    position: absolute;
+    width: 25px;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    cursor: pointer;
 }

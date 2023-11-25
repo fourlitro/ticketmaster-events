@@ -1,21 +1,22 @@
 .event-item-container {
     display: flex;
     margin: 24px 0px;
-    align-items: center;
+    align-items: start;
 }
-.event-info-container{
+
+.event-info-container {
     display: flex;
     flex-direction: column;
     align-items: start;
     margin-left: 14px;
 }
 
-.event-name{
+.event-name {
     margin: 0;
     font-size: 22px;
 }
 
-.event-info{
+.event-info {
     text-align: left;
     margin: 0;
     overflow: hidden;
@@ -23,9 +24,8 @@
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
-
 }
 
-.see-more-btn{
+.see-more-btn {
     margin-top: 8px;
 }
