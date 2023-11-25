@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 
-const Navbar = ({onSearch}) => {
+const Navbar = forwardRef(({onSearch}, ref) => {
 
     const [search, setSearch] = useState('');
+    
 
     useEffect(()=> {
         console.log('onSearch cambio');
@@ -30,16 +31,18 @@ const Navbar = ({onSearch}) => {
     };
 
     return (
-        <div>
+        <div ref={ref}>
             <p>Mi boletera</p>
             <input 
-            placeholder="busca tu evento favorito" 
-            onChange={handleInputChange}
-            onKeyDown={handleInputKeyDown}
-            value={search}
+                placeholder="busca tu evento favorito" 
+                onChange={handleInputChange}
+                onKeyDown={handleInputKeyDown}
+                value={search}
             />
         </div>
     );
-};
+});
+
+Navbar.displayName = 'Navbar';
 
 export default Navbar;
