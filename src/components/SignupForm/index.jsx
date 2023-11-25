@@ -1,58 +1,46 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+
 
 const SignupForm = () =>{
+    const { register, handleSubmit, reset, formState: { errors}} = useForm();
 
-    const [name, setName] = useState('');
-    const [age, setAge] = useState('');
-    const [address, setAddress] = useState('');
-    const [zipcode, setZipcode] = useState('');
-    const [phone, setPhone] = useState('');
+   
 
     const handleClearClick = () => {
-        setName('');
-        setAge('');
-        setAddress('');
-        setZipcode('');
-        setPhone('');
+        reset();
     };
 
     const handleSubmitForm = (evt) => {
-        evt.preventDefault(); //hace que el formulario al momento de dar submit no recarge la pag
-
-        console.log("submit: ", {
-            name,
-            age,
-            zipcode,
-            phone,
-            address
-        });
+        console.log(data);
     };
 
+    console.log(errors);
+
     return (
-        <form onSubmit={handleSubmitForm}>
+        <form onSubmit={handleSubmit(handleSubmitForm)}>
             <label>
                 Name
-                <input value={name} onChange={(evt) => setName(evt.target.value)} required/>
+                <input {...register('name', {required: true})} />
             </label>
             <br />
             <label>
                 Age
-                <input value={age} onChange={(evt) => setAge(evt.target.value)} required/>
+                <input {...register('age', {required: true})}/>
             </label>
             <br />
             <label>
                 Address
-                <input value={address} onChange={(evt) => setAddress(evt.target.value)} required/>
+                <input {...register('address', {required: true})} />
             </label>
             <br />
             <label>
                 Zipcode
-                <input value={zipcode} onChange={(evt) => setZipcode(evt.target.value)} required/>
+                <input {...register('zipcode',  {required: true})} />
             </label>
             <br />
             <label>
                 Phone
-                <input value={phone} onChange={(evt) => setPhone(evt.target.value)} required/>
+                <input {...register('phone',  {required: true})} />
             </label>
             <br />
             <div>
