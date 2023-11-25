@@ -5,7 +5,7 @@ import EventItem from "./components/EventItem/Index";
 //const events = data._embedded.events;
 
 const Events = ({ searchTerm }) => {
-  const { events } = useEventData();
+  const { events, isLoading, error } = useEventData();
 
   const handleEventItemClick = (id) => {
     console.log("evento clickeado: ", id);
@@ -30,6 +30,14 @@ const Events = ({ searchTerm }) => {
         />
       ));
   };
+
+  if (error){
+    return <div>Ha ocurrido un error</div>
+  }
+
+  if (isLoading){
+    return <div>Cargando resultados...</div>
+  }
 
   return (
     <div>
