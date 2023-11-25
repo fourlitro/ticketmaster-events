@@ -4,7 +4,7 @@ import Navbar from './components/Navbar';
 import Events from './components/Events';
 
 import './App.css'
-import SignupForm from './components/SignupForm';
+
 
 function App() {
   
@@ -18,9 +18,9 @@ function App() {
 
   return (
     <>
-      {/*<Navbar onSearch={handleNavbarSearch} />
-      <Events searchTerm={searchTerm}/>*/}
-      <SignupForm />
+      <Navbar onSearch={handleNavbarSearch} />
+      <Events searchTerm={searchTerm}/>
+      
     </>
   )
 }
