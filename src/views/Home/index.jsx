@@ -3,7 +3,7 @@ import ReactPaginate from 'react-paginate';
 
 import Navbar from '../../components/Navbar';
 import Events from '../../components/Events';
-import useEventsResults from '../../state/events-results';
+import useEventsResults from '../../state/event-result';
 import styles from './Home.module.css';
 
 const Home = () => {

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 
-import useEventsResults from "../../state/events-results";
+import useEventsResults from "../../state/event-result";
 import styles from './Detail.module.css';
 
 const Detail = () => {
